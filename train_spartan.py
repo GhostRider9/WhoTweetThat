@@ -49,7 +49,7 @@ def fit_predict(clfs, indexs, data, classifications):
     for i in indexs:
         s_time = time()
         clfs[i].fit(data, classifications)
-        save_predicted(clfs.predict(test_data), i)
+        save_predicted(clfs[i].predict(test_data), i)
         with open('trained_{}.pkl'.format(i), 'wb') as fid:
             pickle.dump(clfs[i], fid, protocol=4)
         print("time cost:{}".format(time() - s_time))
